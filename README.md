@@ -1,13 +1,49 @@
-# Repo para EIEC - DevOps - UNIR
+# Repo para EIEC – DevOps – UNIR
 
-Este repositorio nos servirá para demostrar el uso de Git en la asignatura de EIEC y muchas cosas mas.
+Este repositorio sirve para demostrar el uso de Git y pull-requests en la asignatura de EIEC. Incluye un script en Python que ordena listas de palabras y, opcionalmente, elimina duplicados.
 
 ---
 
-Los comandos del Makefile funcionarán en Linux y MacOS. En caso de usar Windows, necesitarás adaptarlos o ejecutarlos en una máquina virtual Linux.
+## Contenido
 
-## Ejecución
+- `main.py` : script principal en Python.  
+- `Makefile` : atajos para ejecutar el script (con y sin Docker).  
+- `words.txt` : ejemplo de lista de palabras (una por línea).
 
-python3 main.py <filename> <dup>
-  filename: **ruta** al fichero que contiene la lista de palabras, una por línea
-  dup: **yes|no**, yes para eliminar palabras duplicadas, no para mantener la lista
+---
+
+## Requisitos
+
+- Python 3.6+  
+- (Opcional) Docker  
+- `make` en Linux/MacOS (en Windows, adapta los comandos o usa WSL)
+
+---
+
+## Uso
+
+```bash
+python3 main.py <filename> <remove_duplicates> <order>
+
+
+filename	Ruta al fichero de texto con la lista de palabras (una por línea).
+remove_duplicates	yes → elimina duplicados; no → conserva duplicados.
+order	asc → orden ascendente; desc → orden descendente.
+
+Ejecución de ejemplo
+
+Con Docker (Makefile):
+make run
+# Ejecuta: python3 main.py words.txt yes asc
+
+
+
+Directamente con Python:
+
+python3 main.py words.txt yes desc
+
+
+
+Salida esperada:
+
+['gryffindor', 'hufflepuff', 'ravenclaw', 'slytherin']
